@@ -1,0 +1,13 @@
+/*
+  X-Content-Type-Options: nosniff
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/sw.js
+  Cache-Control: no-cache
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+/OpenWheelGP.apk
+  Content-Type: application/vnd.android.package-archive
+  Content-Disposition: attachment; filename="OpenWheelGP-v11.apk"
