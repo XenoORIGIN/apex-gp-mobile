@@ -1,7 +1,8 @@
 {
   "name": "Apex GP Mobile",
-  "short_name": "AGP",
-  "start_url": "/play/",
+  "short_name": "Apex GP",
+  "id": "./play/",
+  "start_url": "./play/",
   "scope": "./",
   "display": "fullscreen",
   "orientation": "landscape",
