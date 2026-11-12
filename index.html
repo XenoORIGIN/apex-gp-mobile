@@ -1,93 +1,270 @@
 <!DOCTYPE html><html lang="th"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0f"><title>Apex GP Mobile · เกมแข่งรถสูตรหนึ่ง 3D</title>
-<meta name="description" content="Apex GP Mobile เกมแข่งรถสูตรหนึ่ง 3D เล่นได้บนเว็บ Android และ iPhone">
+<meta name="theme-color" content="#07070b"><title>Apex GP Mobile · เกมแข่งรถสูตรหนึ่ง 3D</title>
+<meta name="description" content="Apex GP Mobile เกมแข่งรถสูตรหนึ่ง 3D เล่นได้บนเว็บ Android และ iPhone แข่งออนไลน์กับเพื่อนได้">
 <link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest">
-<meta property="og:image" content="https://open-wheel-gp.netlify.app/cover.jpg"><meta property="og:title" content="Apex GP Mobile">
+<meta property="og:type" content="website"><meta property="og:url" content="https://xenoorigin.github.io/apex-gp-mobile/">
+<meta property="og:title" content="Apex GP Mobile"><meta property="og:description" content="เกมแข่งรถสูตรหนึ่ง 3D บนมือถือ · เล่นบนเว็บ Android และ iPhone">
+<meta property="og:image" content="https://xenoorigin.github.io/apex-gp-mobile/cover.jpg"><meta name="twitter:card" content="summary_large_image">
 <style>
-:root{--r:#e10600;--bg:#0a0a0f;--card:#15151e;--line:#ffffff14;--mut:#9a9caa}
+:root{--r:#e10600;--r2:#ff2a1f;--bg:#07070b;--card:#111118;--line:#ffffff14;--mut:#9ea1ae;--cy:#19d3ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:#f4f4f6;font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:#f4f4f6;font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 a{color:inherit}
 .kerb{height:8px;background:repeating-linear-gradient(90deg,var(--r) 0 28px,#fff 28px 56px)}
-nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:12px 18px;padding-top:calc(12px + env(safe-area-inset-top));background:#0a0a0fe6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+/* ---------- ไฟสตาร์ท 5 ดวง (เปิดเว็บ) ---------- */
+#intro{position:fixed;inset:0;z-index:50;background:#030305;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:transform .7s cubic-bezier(.7,0,.2,1),opacity .7s}
+#intro.go{transform:translateY(-100%);opacity:.6}
+#intro .gantry{display:flex;gap:clamp(8px,2.4vw,18px);padding:16px clamp(14px,3vw,24px);background:#111;border-radius:14px;box-shadow:0 0 0 2px #1d1d22,0 30px 60px #000}
+#intro .pod{display:flex;flex-direction:column;gap:8px;padding:8px;background:#060607;border-radius:10px}
+#intro .pod i{width:clamp(34px,10vw,64px);height:clamp(34px,10vw,64px);border-radius:50%;background:#2a0505;box-shadow:inset 0 0 0 3px #000;transition:background .08s,box-shadow .08s}
+#intro .pod.on i{background:#ff1a0d;box-shadow:0 0 22px #ff1a0d,0 0 60px #ff1a0d88,inset 0 0 0 3px #000}
+#intro .msg{height:44px;font-size:clamp(20px,6vw,38px);font-weight:900;font-style:italic;letter-spacing:1px;text-transform:uppercase;opacity:0;transform:scale(.8);transition:all .25s}
+#intro .msg.show{opacity:1;transform:none}
+#intro .skip{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom));font-size:12px;color:#777;letter-spacing:2px}
+/* ---------- แถบบน ---------- */
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:12px 18px;padding-top:calc(12px + env(safe-area-inset-top));background:#07070be0;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav img{width:34px;height:34px;border-radius:8px}
 .brand{font-weight:900;font-style:italic;letter-spacing:.5px;font-size:17px}.brand b{color:var(--r)}
 .beta{font-size:10px;font-weight:800;letter-spacing:1.5px;background:var(--r);padding:3px 7px;border-radius:4px;font-style:normal}
-nav .sp{flex:1}nav a.n{font-size:13px;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:6px;background:var(--r);transform:skewX(-12deg)}nav a.n span{display:inline-block;transform:skewX(12deg)}
-.hero{position:relative;padding:34px 18px 40px;max-width:980px;margin:0 auto}
-.hero:before{content:"";position:absolute;inset:-40px -60% auto -60%;height:520px;background:radial-gradient(ellipse at 50% 30%,#e1060033,transparent 60%);z-index:-1}
-.cv{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px #000c,0 0 0 1px #e1060022}
-.cv img{display:block;width:100%}
-.cv:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#0a0a0fee)}
-.tag{display:inline-flex;align-items:center;gap:8px;margin:22px 0 8px;font-size:12px;font-weight:800;letter-spacing:3px;color:var(--r)}
+nav .sp{flex:1}nav .lk{font-size:13px;font-weight:700;text-decoration:none;color:#c9cbd4;padding:8px 6px}
+nav a.n{font-size:13px;font-weight:800;text-decoration:none;padding:9px 16px;background:var(--r);transform:skewX(-12deg)}nav a.n span{display:inline-block;transform:skewX(12deg)}
+@media(max-width:560px){nav .lk{display:none}}
+/* ---------- ส่วนหัว: ข้อความ + รถ 3D ---------- */
+.hero{position:relative;max-width:1120px;margin:0 auto;padding:30px 18px 26px;display:grid;grid-template-columns:1fr 1.15fr;gap:12px;align-items:center}
+.hero:before{content:"";position:absolute;inset:-60px -40% auto -40%;height:640px;background:radial-gradient(ellipse at 62% 45%,#e1060038,transparent 58%);z-index:-1}
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:14px}.hero .txt{order:2}}
+.tag{display:inline-flex;align-items:center;gap:8px;margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:3px;color:var(--r)}
 .tag:before{content:"";width:26px;height:3px;background:var(--r)}
-h1{margin:0;font-size:clamp(38px,10vw,76px);line-height:.95;font-weight:900;font-style:italic;letter-spacing:-1px;text-transform:uppercase}
+h1{margin:0;font-size:clamp(40px,8.4vw,80px);line-height:.92;font-weight:900;font-style:italic;letter-spacing:-1px;text-transform:uppercase}
 h1 b{color:var(--r)}
-.lead{color:#c8cad3;font-size:16px;line-height:1.65;max-width:560px;margin:14px 0 22px}
+.lead{color:#c8cad3;font-size:16px;line-height:1.7;max-width:540px;margin:16px 0 22px}
 .cta{display:flex;flex-wrap:wrap;gap:12px}
-.btn{flex:1 1 200px;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:900;font-size:17px;letter-spacing:.5px;padding:17px 22px;background:var(--r);clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:filter .15s,transform .15s}
+.btn{flex:1 1 190px;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:900;font-size:17px;letter-spacing:.5px;padding:17px 22px;background:var(--r);border:0;color:#fff;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:filter .15s,transform .15s;cursor:pointer}
 .btn:active{transform:scale(.97)}.btn:hover{filter:brightness(1.15)}
 .btn.g{background:#fff;color:#0a0a0f}
-.lights{display:flex;gap:8px;margin:26px 0 0}
-.lights i{width:22px;height:22px;border-radius:50%;background:#2a0000;box-shadow:inset 0 0 0 3px #111;animation:on 4s infinite}
-.lights i:nth-child(2){animation-delay:.3s}.lights i:nth-child(3){animation-delay:.6s}.lights i:nth-child(4){animation-delay:.9s}.lights i:nth-child(5){animation-delay:1.2s}
-@keyframes on{0%,10%{background:#2a0000;box-shadow:inset 0 0 0 3px #111}12%,60%{background:#ff1a0d;box-shadow:0 0 14px #ff1a0d,inset 0 0 0 3px #111}62%,100%{background:#2a0000;box-shadow:inset 0 0 0 3px #111}}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:980px;margin:0 auto}
+.car{position:relative;height:clamp(300px,46vw,520px)}
+#car3d{position:absolute;inset:0;cursor:grab;opacity:0;transition:opacity 1s}#car3d.ready{opacity:1}
+#car3d canvas{width:100%!important;height:100%!important;display:block;touch-action:pan-y}
+#car3d:active{cursor:grabbing}
+.car .hint{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);font-size:12px;color:#aab0bc;display:flex;align-items:center;gap:6px;pointer-events:none;transition:opacity .4s;white-space:nowrap}
+#car3d.touched~.hint{opacity:0}
+.car .tm{position:absolute;top:6px;right:4px;text-align:right;pointer-events:none}
+.car .tm small{display:block;font-size:10.5px;letter-spacing:2.5px;color:var(--mut)}
+.car .tm b{font-size:20px;font-style:italic;font-weight:900;text-transform:uppercase}
+#carTeams{position:absolute;left:0;right:0;bottom:30px;display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
+#carTeams button{width:22px;height:22px;border-radius:50%;border:2px solid #ffffff33;padding:0;cursor:pointer;transition:transform .15s}
+#carTeams button.on{border-color:#fff;transform:scale(1.2)}
+/* ---------- แถบตัวเลข ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:1120px;margin:0 auto}
 .stats div{padding:18px 8px;text-align:center;border-right:1px solid var(--line)}.stats div:last-child{border:0}
 .stats b{display:block;font-size:30px;font-weight:900;font-style:italic;color:#fff}.stats span{font-size:11px;letter-spacing:2px;color:var(--mut);text-transform:uppercase}
-section{max-width:980px;margin:0 auto;padding:44px 18px}
-h2{font-size:28px;font-weight:900;font-style:italic;text-transform:uppercase;margin:0 0 18px;display:flex;align-items:center;gap:12px}
+section{max-width:1120px;margin:0 auto;padding:50px 18px}
+h2{font-size:28px;font-weight:900;font-style:italic;text-transform:uppercase;margin:0 0 8px;display:flex;align-items:center;gap:12px}
 h2:before{content:"";width:6px;height:28px;background:var(--r);transform:skewX(-15deg)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.f{position:relative;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 18px 20px;overflow:hidden}
+.sub{color:var(--mut);margin:0 0 20px;font-size:14.5px;line-height:1.6}
+/* ---------- เลื่อนแล้วรถวิ่ง ---------- */
+#lap{position:relative;height:320vh;max-width:none;padding:0}
+#lap .stick{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:1120px;margin:0 auto;padding:70px 18px 20px}
+#lap .head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.trk{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.trk svg{width:100%;height:100%;max-height:62vh;overflow:visible}
+.trk .base{fill:none;stroke:#26262f;stroke-width:16;stroke-linejoin:round}
+.trk .edge{fill:none;stroke:#3a3a46;stroke-width:20;stroke-linejoin:round;opacity:.5}
+.trk .done{fill:none;stroke:url(#gr);stroke-width:6;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 0 6px #e10600)}
+.trk .sf{stroke:#fff;stroke-width:4}
+.dash{position:absolute;right:0;bottom:0;display:flex;gap:10px;align-items:stretch;background:#0d0d13ee;border:1px solid var(--line);border-radius:14px;padding:10px 14px;box-shadow:0 20px 40px #000a}
+.dash .gr{font-size:46px;font-weight:900;font-style:italic;line-height:1;padding-right:12px;border-right:1px solid var(--line);display:flex;align-items:center;min-width:44px;justify-content:center}
+.dash .s b{display:block;font-size:44px;font-weight:900;font-style:italic;line-height:1;font-variant-numeric:tabular-nums;min-width:96px;text-align:right}
+.dash .s small{font-size:10.5px;letter-spacing:2px;color:var(--mut)}
+.dash .bars{display:flex;flex-direction:column;justify-content:center;gap:6px;width:70px}
+.dash .bars i{display:block;height:7px;border-radius:4px;background:#22222b;overflow:hidden;position:relative}
+.dash .bars i span{position:absolute;inset:0;transform-origin:left;transform:scaleX(0)}
+.dash .bars .t span{background:#2ec95c}.dash .bars .b span{background:var(--r2)}
+.dash .bars small{font-size:9.5px;letter-spacing:1.5px;color:var(--mut)}
+.leds{display:flex;gap:4px;justify-content:flex-end;margin-bottom:6px}.leds i{flex:none;width:9px;height:9px;border-radius:50%;background:#1d1d24}
+.leds i.lg{background:#2ec95c;box-shadow:0 0 8px #2ec95c}.leds i.lr{background:#ff2a1f;box-shadow:0 0 8px #ff2a1f}.leds i.lb{background:#3d7bff;box-shadow:0 0 8px #3d7bff}
+.prog{position:absolute;left:0;bottom:0;font-size:12px;color:var(--mut);letter-spacing:1.5px}
+.prog b{font-size:26px;color:#fff;font-style:italic;font-weight:900;display:block;letter-spacing:0}
+@media(max-width:600px){.dash{left:0;right:0;justify-content:space-between}.dash .s b{font-size:38px;min-width:80px}.dash .bars{width:60px}.leds i{width:7px;height:7px}.prog{bottom:auto;top:0}.trk svg{max-height:52vh}}
+/* ---------- ตารางเวลาต่อรอบ ---------- */
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;scrollbar-width:none}
+.tabs button{flex:none;background:var(--card);border:1px solid var(--line);color:#d8dae2;font:inherit;font-weight:800;font-size:13px;letter-spacing:1px;padding:9px 14px;border-radius:999px;cursor:pointer}
+.tabs button.on{background:var(--r);border-color:var(--r);color:#fff}
+.board{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;min-height:120px}
+.row{display:grid;grid-template-columns:42px 6px 44px 1fr auto;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:15px;animation:in .35s both}
+.row:last-child{border:0}.row .p{font-weight:900;font-style:italic;font-size:18px;text-align:center}.row .c{height:22px;border-radius:2px}
+.row .no{font-weight:900;font-style:italic;color:var(--mut)}.row .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.row .t{font-family:ui-monospace,Menlo,monospace;font-size:14px}.row.h{background:#ffffff08;font-size:11px;letter-spacing:2px;color:var(--mut);text-transform:uppercase;padding:9px 16px;animation:none}
+.row.p1 .p{color:#ffd21f}.row.p2 .p{color:#d6dbe3}.row.p3 .p{color:#cd8a4e}
+.empty{padding:34px 18px;text-align:center;color:var(--mut);line-height:1.7}
+.empty a{color:#fff;font-weight:800}
+@keyframes in{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+/* ---------- ระบบในเกม ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.f{position:relative;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 18px 20px;overflow:hidden;transition:transform .2s,border-color .2s}
+.f:hover{transform:translateY(-3px);border-color:#e1060066}
 .f:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--r)}
 .f .no{position:absolute;right:12px;top:4px;font-size:46px;font-weight:900;font-style:italic;color:#ffffff0a}
-.f b{display:block;font-size:17px;margin-bottom:6px}.f p{margin:0;color:var(--mut);font-size:14px;line-height:1.55}
-.board{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden}
-.row{display:grid;grid-template-columns:42px 6px 1fr auto;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:15px}
-.row:last-child{border:0}.row .p{font-weight:900;font-style:italic;font-size:18px;text-align:center}.row .c{height:22px;border-radius:2px}
-.row .t{font-family:ui-monospace,Menlo,monospace;color:var(--mut);font-size:13px}.row.h{background:#ffffff08;font-size:11px;letter-spacing:2px;color:var(--mut);text-transform:uppercase;padding:9px 16px}
-.dl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:linear-gradient(110deg,#e10600,#8a0400);border-radius:4px;padding:26px 22px;position:relative;overflow:hidden}
+.f b{display:block;font-size:17px;margin-bottom:6px}.f p{margin:0;color:var(--mut);font-size:14px;line-height:1.6}
+.f .new{display:inline-block;margin-left:6px;font-size:9.5px;font-weight:800;letter-spacing:1px;background:var(--cy);color:#00141a;padding:1px 6px;border-radius:4px;vertical-align:2px}
+.cover{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px #000c}
+.cover img{display:block;width:100%}
+.dl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:linear-gradient(110deg,#e10600,#7a0300);border-radius:6px;padding:26px 22px;position:relative;overflow:hidden}
 .dl:after{content:"";position:absolute;right:-40px;top:0;bottom:0;width:180px;background:repeating-linear-gradient(45deg,#ffffff14 0 12px,transparent 12px 24px)}
-.dl h3{margin:0;font-size:24px;font-weight:900;font-style:italic;text-transform:uppercase}.dl p{margin:4px 0 0;color:#ffd9d6;font-size:14px}
-.dl .btn{flex:0 0 auto;background:#fff;color:#0a0a0f;position:relative;z-index:1}
-footer{text-align:center;color:#6c6f7c;font-size:12px;padding:26px 18px calc(30px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
-@media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}.stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.dl h3{margin:0 0 4px;font-size:24px;font-style:italic;font-weight:900}.dl p{margin:0;color:#ffd9d6}
+.dl .btn{flex:0 0 auto;position:relative;z-index:1;background:#fff;color:#0a0a0f}
+footer{text-align:center;color:#666a78;font-size:12px;padding:30px 18px 40px;line-height:1.8}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style></head><body>
-<div class="kerb"></div>
-<nav><img src="icon-192.png" alt=""><span class="brand">APEX <b>GP</b> MOBILE</span><span class="beta">BETA</span><span class="sp"></span><a class="n" href="play/"><span>เล่นเลย</span></a></nav>
 
-<div class="hero">
-<div class="cv"><img src="cover.jpg" alt="Apex GP Mobile"></div>
-<div class="tag">2026 SEASON</div>
-<h1>Lights out<br>and <b>away</b> we go</h1>
-<p class="lead">เกมแข่งรถสูตรหนึ่ง 3D บนมือถือ ใช้รถตามกติกาปี 2026 มีระบบ ERS, Active Aero, เปลี่ยนยาง, สภาพอากาศ และวิทยุทีมที่พูดคุยผ่านไมค์ได้จริง เล่นคนเดียวหรือแข่งออนไลน์กับเพื่อนก็ได้</p>
-<div class="cta"><a class="btn" href="play/">▶ เล่นบนเว็บ</a><a class="btn g" href="download">ดาวน์โหลดแอป</a></div>
-<div class="lights"><i></i><i></i><i></i><i></i><i></i></div>
+<div id="intro" aria-hidden="true">
+  <div class="gantry"><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div></div>
+  <div class="msg">Lights out!</div>
+  <div class="skip">แตะเพื่อข้าม</div>
 </div>
 
-<div class="stats"><div><b>22</b><span>นักขับ</span></div><div><b>11</b><span>ทีม</span></div><div><b>3D</b><span>เล่นบนมือถือ</span></div><div><b>ONLINE</b><span>แข่งกับเพื่อน</span></div></div>
+<div class="kerb"></div>
+<nav><img src="icon-192.png" alt=""><span class="brand">APEX <b>GP</b> MOBILE</span><span class="beta">BETA</span><span class="sp"></span><a class="lk" href="#lap">ลองขับ</a><a class="lk" href="#board">ตารางเวลา</a><a class="lk" href="download.html">ดาวน์โหลด</a><a class="n" href="play/"><span>เล่นเลย</span></a></nav>
 
-<section><h2>ระบบในเกม</h2><div class="grid">
+<div class="hero">
+  <div class="txt">
+    <div class="tag">2026 SEASON</div>
+    <h1>Lights out<br>and <b>away</b><br>we go</h1>
+    <p class="lead">เกมแข่งรถสูตรหนึ่ง 3D บนมือถือ ใช้รถตามกติกาปี 2026 มี ERS, Active Aero, เกียร์ Manual, เปลี่ยนยาง, ฝนตกระหว่างแข่ง และวิทยุทีมที่คุยผ่านไมค์ได้จริง เล่นคนเดียวหรือแข่งออนไลน์กับเพื่อนก็ได้</p>
+    <div class="cta"><a class="btn" href="play/">▶ เล่นบนเว็บ</a><a class="btn g" href="download.html">ดาวน์โหลดแอป</a></div>
+  </div>
+  <div class="car">
+    <div class="tm"><small>รถในเกม · ลากหมุนดูได้</small><b id="carTeam">&nbsp;</b></div>
+    <div id="car3d"></div>
+    <div id="carTeams"></div>
+    <div class="hint">⟲ ลากนิ้วเพื่อหมุนรถ</div>
+  </div>
+</div>
+
+<div class="stats"><div><b>22</b><span>นักขับ</span></div><div><b>11</b><span>ทีม</span></div><div><b>7</b><span>สนาม</span></div><div><b>ONLINE</b><span>แข่งกับเพื่อน</span></div></div>
+
+<section id="lap"><div class="stick">
+  <div class="head"><div><h2>เลื่อนจอ = ขับ 1 รอบ</h2><p class="sub">BAHRAIN · ความเร็วจริงจากฟิสิกส์ในเกม เลื่อนลงเพื่อเหยียบ เลื่อนขึ้นเพื่อถอย</p></div></div>
+  <div class="trk">
+    <svg viewBox="0 0 1000 640" aria-label="แผนที่สนามบาห์เรน">
+      <defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#ff8a00"/><stop offset="1" stop-color="#e10600"/></linearGradient></defs>
+      <path class="edge" d="M322.9 304.8 L323.4 294.3 L323.7 283.7 L324.1 273.2 L324.5 262.7 L324.7 252.2 L325.0 241.6 L325.2 231.1 L325.5 220.6 L325.7 210.1 L326.0 199.6 L326.2 189.0 L326.4 178.5 L326.7 168.0 L327.0 157.5 L327.3 147.0 L327.6 136.5 L327.9 125.9 L328.2 115.4 L328.4 104.9 L328.6 94.3 L328.9 83.9 L329.3 73.3 L329.7 62.8 L330.4 52.3 L332.5 42.1 L341.8 40.0 L350.0 46.5 L357.2 54.1 L364.9 61.3 L374.6 64.9 L384.9 63.1 L394.9 59.7 L404.9 56.3 L415.0 53.3 L425.4 52.0 L435.9 52.9 L446.3 54.5 L456.6 56.4 L467.0 58.2 L477.3 60.1 L487.7 62.1 L498.0 64.0 L508.3 66.0 L518.7 67.9 L529.0 69.9 L539.4 71.9 L549.7 73.9 L560.0 75.9 L570.4 77.9 L580.7 80.0 L591.0 82.0 L601.3 84.0 L611.6 86.1 L622.0 88.2 L632.3 90.3 L642.6 92.3 L652.9 94.5 L663.2 96.6 L673.5 98.8 L683.4 102.2 L689.3 110.5 L688.0 120.8 L682.2 129.6 L674.5 136.7 L666.1 143.1 L657.6 149.3 L649.1 155.4 L640.7 161.9 L632.9 168.9 L625.6 176.4 L618.4 184.2 L611.2 191.8 L605.0 200.3 L600.4 209.7 L596.3 219.4 L591.2 228.6 L583.3 235.4 L573.4 238.7 L562.9 238.3 L552.5 236.4 L542.1 235.0 L531.7 236.0 L522.1 240.2 L514.2 247.2 L507.4 255.2 L500.9 263.5 L494.5 271.8 L488.1 280.2 L481.7 288.5 L475.3 296.8 L468.8 305.1 L462.1 313.2 L453.8 319.5 L444.3 316.7 L441.6 306.8 L442.1 296.3 L443.5 285.8 L445.3 275.5 L447.1 265.1 L448.9 254.7 L450.8 244.4 L452.6 234.0 L454.4 223.6 L456.1 213.3 L457.7 202.9 L459.3 192.5 L460.8 182.0 L462.3 171.6 L462.8 161.1 L460.9 150.8 L456.2 141.4 L449.0 133.8 L441.0 127.0 L431.9 121.9 L425.0 128.4 L423.0 138.7 L421.6 149.1 L420.3 159.6 L419.1 170.0 L418.1 180.5 L417.1 191.0 L416.5 201.5 L416.0 212.0 L415.5 222.5 L415.0 233.0 L414.4 243.5 L413.7 254.0 L413.2 264.6 L412.6 275.0 L412.1 285.5 L411.6 296.1 L411.1 306.6 L410.7 317.1 L410.3 327.6 L410.0 338.2 L409.6 348.6 L409.3 359.2 L408.8 369.7 L408.4 380.2 L407.9 390.7 L407.3 401.2 L406.8 411.7 L406.3 422.3 L406.0 432.7 L406.2 443.3 L408.8 453.4 L416.5 460.4 L426.5 463.2 L437.0 463.0 L447.4 461.1 L457.3 457.5 L466.4 452.3 L474.8 446.0 L482.2 438.6 L488.4 430.0 L493.1 420.6 L496.8 410.8 L500.5 400.9 L504.5 391.2 L509.6 382.0 L516.3 373.9 L524.3 367.1 L533.3 361.6 L543.2 358.4 L553.7 357.1 L564.2 357.5 L574.4 359.9 L584.0 364.2 L593.5 368.8 L603.0 373.3 L612.4 377.9 L621.8 382.8 L630.7 388.3 L638.5 395.4 L644.5 404.0 L647.8 413.9 L644.2 423.5 L636.7 430.9 L628.2 437.1 L619.2 442.5 L610.1 447.9 L601.1 453.2 L591.9 458.5 L582.8 463.7 L573.6 468.9 L564.5 474.0 L555.3 479.2 L546.1 484.3 L536.9 489.5 L527.7 494.6 L518.6 499.8 L509.4 504.9 L500.2 510.0 L491.0 515.2 L481.8 520.3 L472.6 525.4 L463.4 530.5 L454.2 535.6 L445.0 540.7 L435.8 545.8 L426.5 550.9 L417.4 556.0 L408.1 561.1 L398.9 566.1 L389.7 571.2 L380.5 576.3 L371.3 581.4 L362.0 586.4 L352.8 591.5 L343.6 596.5 L333.7 600.0 L324.5 596.1 L319.1 587.1 L314.7 577.5 L311.6 567.4 L310.7 557.0 L310.8 546.5 L311.0 536.0 L311.3 525.4 L311.5 514.9 L311.8 504.4 L312.1 493.8 L312.4 483.3 L312.7 472.8 L313.1 462.3 L313.5 451.8 L313.9 441.3 L314.4 430.7 L314.9 420.2 L315.6 409.7 L316.3 399.2 L317.1 388.8 L317.8 378.3 L318.6 367.8 L319.5 357.3 L320.3 346.8 L321.0 336.3 L321.7 325.8 L322.3 315.2 Z"/><path class="base" d="M322.9 304.8 L323.4 294.3 L323.7 283.7 L324.1 273.2 L324.5 262.7 L324.7 252.2 L325.0 241.6 L325.2 231.1 L325.5 220.6 L325.7 210.1 L326.0 199.6 L326.2 189.0 L326.4 178.5 L326.7 168.0 L327.0 157.5 L327.3 147.0 L327.6 136.5 L327.9 125.9 L328.2 115.4 L328.4 104.9 L328.6 94.3 L328.9 83.9 L329.3 73.3 L329.7 62.8 L330.4 52.3 L332.5 42.1 L341.8 40.0 L350.0 46.5 L357.2 54.1 L364.9 61.3 L374.6 64.9 L384.9 63.1 L394.9 59.7 L404.9 56.3 L415.0 53.3 L425.4 52.0 L435.9 52.9 L446.3 54.5 L456.6 56.4 L467.0 58.2 L477.3 60.1 L487.7 62.1 L498.0 64.0 L508.3 66.0 L518.7 67.9 L529.0 69.9 L539.4 71.9 L549.7 73.9 L560.0 75.9 L570.4 77.9 L580.7 80.0 L591.0 82.0 L601.3 84.0 L611.6 86.1 L622.0 88.2 L632.3 90.3 L642.6 92.3 L652.9 94.5 L663.2 96.6 L673.5 98.8 L683.4 102.2 L689.3 110.5 L688.0 120.8 L682.2 129.6 L674.5 136.7 L666.1 143.1 L657.6 149.3 L649.1 155.4 L640.7 161.9 L632.9 168.9 L625.6 176.4 L618.4 184.2 L611.2 191.8 L605.0 200.3 L600.4 209.7 L596.3 219.4 L591.2 228.6 L583.3 235.4 L573.4 238.7 L562.9 238.3 L552.5 236.4 L542.1 235.0 L531.7 236.0 L522.1 240.2 L514.2 247.2 L507.4 255.2 L500.9 263.5 L494.5 271.8 L488.1 280.2 L481.7 288.5 L475.3 296.8 L468.8 305.1 L462.1 313.2 L453.8 319.5 L444.3 316.7 L441.6 306.8 L442.1 296.3 L443.5 285.8 L445.3 275.5 L447.1 265.1 L448.9 254.7 L450.8 244.4 L452.6 234.0 L454.4 223.6 L456.1 213.3 L457.7 202.9 L459.3 192.5 L460.8 182.0 L462.3 171.6 L462.8 161.1 L460.9 150.8 L456.2 141.4 L449.0 133.8 L441.0 127.0 L431.9 121.9 L425.0 128.4 L423.0 138.7 L421.6 149.1 L420.3 159.6 L419.1 170.0 L418.1 180.5 L417.1 191.0 L416.5 201.5 L416.0 212.0 L415.5 222.5 L415.0 233.0 L414.4 243.5 L413.7 254.0 L413.2 264.6 L412.6 275.0 L412.1 285.5 L411.6 296.1 L411.1 306.6 L410.7 317.1 L410.3 327.6 L410.0 338.2 L409.6 348.6 L409.3 359.2 L408.8 369.7 L408.4 380.2 L407.9 390.7 L407.3 401.2 L406.8 411.7 L406.3 422.3 L406.0 432.7 L406.2 443.3 L408.8 453.4 L416.5 460.4 L426.5 463.2 L437.0 463.0 L447.4 461.1 L457.3 457.5 L466.4 452.3 L474.8 446.0 L482.2 438.6 L488.4 430.0 L493.1 420.6 L496.8 410.8 L500.5 400.9 L504.5 391.2 L509.6 382.0 L516.3 373.9 L524.3 367.1 L533.3 361.6 L543.2 358.4 L553.7 357.1 L564.2 357.5 L574.4 359.9 L584.0 364.2 L593.5 368.8 L603.0 373.3 L612.4 377.9 L621.8 382.8 L630.7 388.3 L638.5 395.4 L644.5 404.0 L647.8 413.9 L644.2 423.5 L636.7 430.9 L628.2 437.1 L619.2 442.5 L610.1 447.9 L601.1 453.2 L591.9 458.5 L582.8 463.7 L573.6 468.9 L564.5 474.0 L555.3 479.2 L546.1 484.3 L536.9 489.5 L527.7 494.6 L518.6 499.8 L509.4 504.9 L500.2 510.0 L491.0 515.2 L481.8 520.3 L472.6 525.4 L463.4 530.5 L454.2 535.6 L445.0 540.7 L435.8 545.8 L426.5 550.9 L417.4 556.0 L408.1 561.1 L398.9 566.1 L389.7 571.2 L380.5 576.3 L371.3 581.4 L362.0 586.4 L352.8 591.5 L343.6 596.5 L333.7 600.0 L324.5 596.1 L319.1 587.1 L314.7 577.5 L311.6 567.4 L310.7 557.0 L310.8 546.5 L311.0 536.0 L311.3 525.4 L311.5 514.9 L311.8 504.4 L312.1 493.8 L312.4 483.3 L312.7 472.8 L313.1 462.3 L313.5 451.8 L313.9 441.3 L314.4 430.7 L314.9 420.2 L315.6 409.7 L316.3 399.2 L317.1 388.8 L317.8 378.3 L318.6 367.8 L319.5 357.3 L320.3 346.8 L321.0 336.3 L321.7 325.8 L322.3 315.2 Z"/><path id="donePath" class="done" d="M322.9 304.8 L323.4 294.3 L323.7 283.7 L324.1 273.2 L324.5 262.7 L324.7 252.2 L325.0 241.6 L325.2 231.1 L325.5 220.6 L325.7 210.1 L326.0 199.6 L326.2 189.0 L326.4 178.5 L326.7 168.0 L327.0 157.5 L327.3 147.0 L327.6 136.5 L327.9 125.9 L328.2 115.4 L328.4 104.9 L328.6 94.3 L328.9 83.9 L329.3 73.3 L329.7 62.8 L330.4 52.3 L332.5 42.1 L341.8 40.0 L350.0 46.5 L357.2 54.1 L364.9 61.3 L374.6 64.9 L384.9 63.1 L394.9 59.7 L404.9 56.3 L415.0 53.3 L425.4 52.0 L435.9 52.9 L446.3 54.5 L456.6 56.4 L467.0 58.2 L477.3 60.1 L487.7 62.1 L498.0 64.0 L508.3 66.0 L518.7 67.9 L529.0 69.9 L539.4 71.9 L549.7 73.9 L560.0 75.9 L570.4 77.9 L580.7 80.0 L591.0 82.0 L601.3 84.0 L611.6 86.1 L622.0 88.2 L632.3 90.3 L642.6 92.3 L652.9 94.5 L663.2 96.6 L673.5 98.8 L683.4 102.2 L689.3 110.5 L688.0 120.8 L682.2 129.6 L674.5 136.7 L666.1 143.1 L657.6 149.3 L649.1 155.4 L640.7 161.9 L632.9 168.9 L625.6 176.4 L618.4 184.2 L611.2 191.8 L605.0 200.3 L600.4 209.7 L596.3 219.4 L591.2 228.6 L583.3 235.4 L573.4 238.7 L562.9 238.3 L552.5 236.4 L542.1 235.0 L531.7 236.0 L522.1 240.2 L514.2 247.2 L507.4 255.2 L500.9 263.5 L494.5 271.8 L488.1 280.2 L481.7 288.5 L475.3 296.8 L468.8 305.1 L462.1 313.2 L453.8 319.5 L444.3 316.7 L441.6 306.8 L442.1 296.3 L443.5 285.8 L445.3 275.5 L447.1 265.1 L448.9 254.7 L450.8 244.4 L452.6 234.0 L454.4 223.6 L456.1 213.3 L457.7 202.9 L459.3 192.5 L460.8 182.0 L462.3 171.6 L462.8 161.1 L460.9 150.8 L456.2 141.4 L449.0 133.8 L441.0 127.0 L431.9 121.9 L425.0 128.4 L423.0 138.7 L421.6 149.1 L420.3 159.6 L419.1 170.0 L418.1 180.5 L417.1 191.0 L416.5 201.5 L416.0 212.0 L415.5 222.5 L415.0 233.0 L414.4 243.5 L413.7 254.0 L413.2 264.6 L412.6 275.0 L412.1 285.5 L411.6 296.1 L411.1 306.6 L410.7 317.1 L410.3 327.6 L410.0 338.2 L409.6 348.6 L409.3 359.2 L408.8 369.7 L408.4 380.2 L407.9 390.7 L407.3 401.2 L406.8 411.7 L406.3 422.3 L406.0 432.7 L406.2 443.3 L408.8 453.4 L416.5 460.4 L426.5 463.2 L437.0 463.0 L447.4 461.1 L457.3 457.5 L466.4 452.3 L474.8 446.0 L482.2 438.6 L488.4 430.0 L493.1 420.6 L496.8 410.8 L500.5 400.9 L504.5 391.2 L509.6 382.0 L516.3 373.9 L524.3 367.1 L533.3 361.6 L543.2 358.4 L553.7 357.1 L564.2 357.5 L574.4 359.9 L584.0 364.2 L593.5 368.8 L603.0 373.3 L612.4 377.9 L621.8 382.8 L630.7 388.3 L638.5 395.4 L644.5 404.0 L647.8 413.9 L644.2 423.5 L636.7 430.9 L628.2 437.1 L619.2 442.5 L610.1 447.9 L601.1 453.2 L591.9 458.5 L582.8 463.7 L573.6 468.9 L564.5 474.0 L555.3 479.2 L546.1 484.3 L536.9 489.5 L527.7 494.6 L518.6 499.8 L509.4 504.9 L500.2 510.0 L491.0 515.2 L481.8 520.3 L472.6 525.4 L463.4 530.5 L454.2 535.6 L445.0 540.7 L435.8 545.8 L426.5 550.9 L417.4 556.0 L408.1 561.1 L398.9 566.1 L389.7 571.2 L380.5 576.3 L371.3 581.4 L362.0 586.4 L352.8 591.5 L343.6 596.5 L333.7 600.0 L324.5 596.1 L319.1 587.1 L314.7 577.5 L311.6 567.4 L310.7 557.0 L310.8 546.5 L311.0 536.0 L311.3 525.4 L311.5 514.9 L311.8 504.4 L312.1 493.8 L312.4 483.3 L312.7 472.8 L313.1 462.3 L313.5 451.8 L313.9 441.3 L314.4 430.7 L314.9 420.2 L315.6 409.7 L316.3 399.2 L317.1 388.8 L317.8 378.3 L318.6 367.8 L319.5 357.3 L320.3 346.8 L321.0 336.3 L321.7 325.8 L322.3 315.2 Z"/>
+      <line id="sf" class="sf"/>
+      <g id="carDot"><circle r="15" fill="#e1060044"/><circle r="8" fill="#fff" stroke="#e10600" stroke-width="4"/></g>
+    </svg>
+    <div class="prog"><span>LAP PROGRESS</span><b id="pct">0%</b></div>
+    <div class="dash"><div class="gr" id="gear">N</div><div class="s"><div class="leds" id="leds"></div><b id="spd">0</b><small>KM/H</small></div><div class="bars"><small>THROTTLE</small><i class="t"><span id="thr"></span></i><small>BRAKE</small><i class="b"><span id="brk"></span></i></div></div>
+  </div>
+</div></section>
+
+<section id="board" class="rv"><h2>ตารางเวลาต่อรอบ</h2><p class="sub">รอบที่เร็วที่สุดของผู้เล่นจริงทุกคน อัปเดตทันทีหลังจบการแข่ง (ต้องล็อกอินในเกม)</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="board" id="lb"><div class="empty">กำลังโหลด...</div></div>
+</section>
+
+<section class="rv"><h2>ระบบในเกม</h2><div class="grid">
 <div class="f"><span class="no">01</span><b>ERS แบบ Manual</b><p>ตัดสินใจเองว่าจะใช้แบตตรงไหน กด BOOST บนทางตรง และชาร์จคืนตอนเบรก</p></div>
-<div class="f"><span class="no">02</span><b>วิทยุทีม</b><p>คุยกับวิศวกรผ่านไมค์ ขอเข้าพิท ถามระยะห่าง หรือสั่งกลยุทธ์ได้ด้วยเสียง</p></div>
-<div class="f"><span class="no">03</span><b>ควอลิฟาย + Ghost</b><p>จับเวลาหารอบที่ดีที่สุด แล้วแข่งกับรถผีของรอบที่เร็วที่สุดของคุณเอง</p></div>
-<div class="f"><span class="no">04</span><b>ยางและสภาพอากาศ</b><p>ฝนตกได้ระหว่างแข่ง เลือกยางแห้ง Intermediate หรือ Wet ให้ทันเวลา</p></div>
-<div class="f"><span class="no">05</span><b>พิทเลนจริง</b><p>ขับเข้าพิทเอง คุมความเร็ว แล้วดูทีมงานเปลี่ยนยางให้แบบสด ๆ</p></div>
-<div class="f"><span class="no">06</span><b>แข่งออนไลน์</b><p>สร้างห้องด้วยรหัส 5 ตัว เล่นข้าม Android และ iPhone ได้</p></div>
+<div class="f"><span class="no">02</span><b>เกียร์ Manual<span class="new">NEW</span></b><p>กดเปลี่ยนเกียร์เองตามไฟรอบ หรือใช้เกียร์อัตโนมัติก็ได้</p></div>
+<div class="f"><span class="no">03</span><b>ห้องทดสอบปีก<span class="new">NEW</span></b><p>อุโมงค์ลมเห็นเส้นลมรอบรถ ทดสอบ DRS และออกวิ่งเทสวัดท็อปสปีด</p></div>
+<div class="f"><span class="no">04</span><b>วิทยุทีม</b><p>คุยกับวิศวกรผ่านไมค์ ขอเข้าพิท ถามระยะห่าง หรือสั่งกลยุทธ์ด้วยเสียง</p></div>
+<div class="f"><span class="no">05</span><b>ยางและสภาพอากาศ</b><p>ฝนตกได้ระหว่างแข่ง เลือกยางแห้ง Intermediate หรือ Wet ให้ทันเวลา</p></div>
+<div class="f"><span class="no">06</span><b>จัดปุ่มเอง<span class="new">NEW</span></b><p>ลากย้ายและปรับขนาดปุ่มควบคุมทุกปุ่มให้เข้ามือ</p></div>
+<div class="f"><span class="no">07</span><b>พิทเลนจริง</b><p>ขับเข้าพิทเอง คุมความเร็ว แล้วดูทีมงานเปลี่ยนยางแบบสด ๆ</p></div>
+<div class="f"><span class="no">08</span><b>แข่งออนไลน์</b><p>สร้างห้องด้วยรหัส 5 ตัว เล่นข้าม Android และ iPhone เลือกได้ว่าให้รถชนกันหรือทะลุกัน</p></div>
 </div></section>
 
-<section><h2>ตารางเวลาตัวอย่าง</h2><div class="board">
-<div class="row h"><span>POS</span><span></span><span>ทีม</span><span>เวลา</span></div>
-<div class="row"><span class="p">1</span><span class="c" style="background:#e10600"></span><span>คุณ</span><span class="t">1:31.442</span></div>
-<div class="row"><span class="p">2</span><span class="c" style="background:#ff8700"></span><span>นักขับ AI</span><span class="t">+0.218</span></div>
-<div class="row"><span class="p">3</span><span class="c" style="background:#27f4d2"></span><span>นักขับ AI</span><span class="t">+0.561</span></div>
-<div class="row"><span class="p">4</span><span class="c" style="background:#3671c6"></span><span>นักขับ AI</span><span class="t">+0.904</span></div>
-</div></section>
+<section class="rv"><div class="cover"><img src="cover.jpg" alt="ภาพปก Apex GP Mobile" loading="lazy"></div></section>
 
-<section><div class="dl"><div><h3>พร้อมลงสนามหรือยัง</h3><p>Android ติดตั้ง APK · iPhone เพิ่มไปยังหน้าจอโฮม</p></div><a class="btn" href="download">ดาวน์โหลด</a></div></section>
+<section class="rv"><div class="dl"><div><h3>พร้อมลงสนามหรือยัง</h3><p>Android ติดตั้ง APK · iPhone เพิ่มไปยังหน้าจอโฮม</p></div><a class="btn" href="download.html">ดาวน์โหลด</a></div></section>
 
 <footer>APEX GP MOBILE · BETA<br>ทีมและนักขับในเกมเป็นชื่อสมมติ ไม่เกี่ยวข้องกับ Formula 1 อย่างเป็นทางการ</footer>
 <div class="kerb"></div>
+
+<script>
+// ---------- ไฟสตาร์ท: ติดทีละดวงแล้วดับพร้อมกัน (ครั้งแรกที่เปิดเว็บในแต่ละรอบ) ----------
+(function(){
+  var I=document.getElementById('intro'), pods=I.querySelectorAll('.pod'), msg=I.querySelector('.msg'), done=false, T=[];
+  var seen=false; try{seen=sessionStorage.getItem('apex_intro')==='1';sessionStorage.setItem('apex_intro','1')}catch(e){}
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function end(){ if(done) return; done=true; T.forEach(clearTimeout); I.classList.add('go'); setTimeout(function(){I.remove()},750); document.dispatchEvent(new Event('introdone')); }
+  if(seen||reduce){ I.remove(); setTimeout(function(){document.dispatchEvent(new Event('introdone'))},0); return; }
+  document.body.style.overflow='hidden';
+  I.addEventListener('pointerdown',function(){document.body.style.overflow='';end()});
+  pods.forEach(function(p,k){ T.push(setTimeout(function(){p.classList.add('on');},500+k*650)); });
+  var hold=500+5*650+400+Math.random()*900;
+  T.push(setTimeout(function(){ pods.forEach(function(p){p.classList.remove('on')}); msg.classList.add('show'); }, hold));
+  T.push(setTimeout(function(){ document.body.style.overflow=''; end(); }, hold+850));
+})();
+
+// ---------- รถ 3D: โหลดหลังไฟสตาร์ทดับ (ไฟล์ใหญ่ ไม่ให้หน้าเว็บค้าง) ----------
+document.addEventListener('introdone',function(){ var s=document.createElement('script'); s.src='hero3d.js'; s.defer=true; document.body.appendChild(s); },{once:true});
+
+// ---------- เลื่อนจอแล้วรถวิ่งรอบสนาม ----------
+(function(){
+  var SPD=[285, 285, 285, 285, 266, 274, 277, 278, 279, 279, 280, 281, 281, 282, 282, 282, 283, 282, 282, 271, 233, 203, 165, 130, 90, 48, 59, 86, 113, 114, 105, 125, 145, 160, 172, 184, 193, 202, 211, 219, 226, 232, 237, 242, 246, 250, 254, 257, 260, 263, 263, 266, 268, 269, 271, 267, 229, 199, 160, 125, 83, 81, 104, 127, 149, 167, 183, 195, 206, 216, 225, 233, 240, 242, 208, 170, 145, 150, 146, 164, 180, 193, 163, 164, 179, 192, 205, 216, 225, 227, 193, 148, 110, 66, 66, 98, 126, 150, 168, 184, 197, 208, 219, 227, 235, 242, 248, 254, 233, 209, 171, 158, 139, 100, 56, 79, 111, 137, 158, 175, 190, 203, 214, 224, 233, 241, 248, 254, 259, 262, 266, 271, 274, 278, 281, 284, 285, 285, 285, 285, 285, 285, 250, 210, 172, 129, 103, 113, 135, 155, 172, 186, 198, 208, 217, 224, 230, 236, 241, 246, 250, 245, 208, 185, 192, 202, 210, 217, 224, 231, 237, 242, 227, 194, 152, 115, 86, 105, 131, 151, 168, 182, 194, 205, 214, 223, 231, 238, 245, 251, 257, 262, 267, 271, 275, 278, 282, 285, 285, 285, 285, 285, 285, 285, 285, 285, 283, 242, 206, 164, 126, 83, 88, 116, 141, 161, 176, 189, 201, 211, 221, 228, 235, 242, 248, 254, 259, 264, 268, 272, 276, 279, 282, 285, 285, 285, 285, 285, 285, 285];
+  var sec=document.getElementById('lap'), path=document.getElementById('donePath'), dot=document.getElementById('carDot');
+  var L=path.getTotalLength(); path.style.strokeDasharray=L; path.style.strokeDashoffset=L;
+  var p0=path.getPointAtLength(0), p1=path.getPointAtLength(6), sf=document.getElementById('sf');
+  var nx=-(p1.y-p0.y), ny=p1.x-p0.x, nl=Math.hypot(nx,ny)||1; nx/=nl; ny/=nl;
+  sf.setAttribute('x1',p0.x+nx*16); sf.setAttribute('y1',p0.y+ny*16); sf.setAttribute('x2',p0.x-nx*16); sf.setAttribute('y2',p0.y-ny*16);
+  var leds=document.getElementById('leds'); for(var i=0;i<12;i++) leds.appendChild(document.createElement('i'));
+  var $s=document.getElementById('spd'), $g=document.getElementById('gear'), $t=document.getElementById('thr'), $b=document.getElementById('brk'), $p=document.getElementById('pct');
+  var shown=0, target=0, mf=0;
+  function at(f){ var n=SPD.length, x=f*n, i=Math.floor(x)%n, j=(i+1)%n, k=x-Math.floor(x); return SPD[i]*(1-k)+SPD[j]*k; }
+  function frame(){
+    var r=sec.getBoundingClientRect(), span=r.height-innerHeight;
+    var f=Math.min(1,Math.max(0,-r.top/span));
+    target=f;
+    shown+=(target-shown)*0.18;
+    var d=shown*L, pt=path.getPointAtLength(d);
+    dot.setAttribute('transform','translate('+pt.x+','+pt.y+')');
+    path.style.strokeDashoffset=L-d;
+    var moving=Math.abs(target-shown)>0.0004 && shown>0.0005 && shown<0.9995;
+    var v=shown<=0.0005?0:at(shown), dv=at(Math.min(.999,shown+0.004))-v;
+    mf+=((moving?1:0)-mf)*0.12;   // หยุดเลื่อน = รถค่อยๆ หยุด
+    var kmh=Math.round(v*mf);
+    $s.textContent=kmh;
+    var ms=kmh/3.6, g=kmh<2?'N':Math.min(8,1+Math.floor(ms/11.5)); $g.textContent=g;
+    var frac=typeof g==='number'?Math.min(1,(ms-(g-1)*11.5)/11.5):0, lit=Math.round(frac*12);
+    for(var i=0;i<12;i++) leds.children[i].className=i<lit?(i<4?'lg':i<8?'lr':'lb'):'';
+    var thr=moving?(dv>=-0.5?1:0.15)*mf:0, brk=moving&&dv<-1.5?Math.min(1,-dv/12)*mf:0;
+    $t.style.transform='scaleX('+thr+')'; $b.style.transform='scaleX('+brk+')';
+    $p.textContent=Math.round(shown*100)+'%';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+// ---------- ตารางเวลาต่อรอบ (ข้อมูลจริงจากเซิร์ฟเวอร์เกม) ----------
+(function(){
+  var URL='https://xqimrjxmdktkquwpqytn.supabase.co', KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhxaW1yanhtZGt0a3F1d3BxeXRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQxMjkwNzUsImV4cCI6MjEwOTcwNTA3NX0._0hHIaA2cIia-xK24Gq-MIYtYU9MG7q3PBN1NBFqBq8';
+  var C=[['bahrain','BAHRAIN'],['monaco','MONACO'],['spa','SPA'],['suzuka','SUZUKA'],['monza','MONZA'],['silverstone','SILVERSTONE'],['interlagos','INTERLAGOS']];
+  var tabs=document.getElementById('tabs'), lb=document.getElementById('lb'), cache={};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function fmt(ms){var m=Math.floor(ms/60000), s=(ms%60000)/1000; return m+':'+(s<10?'0':'')+s.toFixed(3)}
+  function show(id){
+    tabs.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.c===id)});
+    var draw=function(rows){
+      if(!rows||!rows.length){ lb.innerHTML='<div class="empty">ยังไม่มีใครทำเวลาที่สนามนี้<br><a href="play/">เป็นคนแรกเลย →</a></div>'; return; }
+      var best=rows[0].lap_ms;
+      lb.innerHTML='<div class="row h"><span>POS</span><span></span><span>NO.</span><span>นักขับ</span><span>เวลา</span></div>'+rows.slice(0,15).map(function(r,i){
+        var col='#'+(r.color>>>0).toString(16).padStart(6,'0');
+        return '<div class="row p'+(i+1)+'" style="animation-delay:'+(i*0.04)+'s"><span class="p">'+(i+1)+'</span><span class="c" style="background:'+col+'"></span><span class="no">#'+esc(r.num)+'</span><span class="nm">'+esc(r.name)+'</span><span class="t">'+(i?'+'+((r.lap_ms-best)/1000).toFixed(3):fmt(r.lap_ms))+'</span></div>';
+      }).join('');
+    };
+    if(cache[id]) return draw(cache[id]);
+    lb.innerHTML='<div class="empty">กำลังโหลด...</div>';
+    fetch(URL+'/rest/v1/rpc/owgp_leaderboard',{method:'POST',headers:{apikey:KEY,Authorization:'Bearer '+KEY,'Content-Type':'application/json'},body:JSON.stringify({p_circuit:id})})
+      .then(function(r){return r.json()}).then(function(d){cache[id]=Array.isArray(d)?d:[]; draw(cache[id])})
+      .catch(function(){lb.innerHTML='<div class="empty">โหลดตารางเวลาไม่ได้ ลองใหม่อีกครั้ง</div>'});
+  }
+  C.forEach(function(c){var b=document.createElement('button'); b.textContent=c[1]; b.dataset.c=c[0]; b.onclick=function(){show(c[0])}; tabs.appendChild(b)});
+  show('bahrain');
+})();
+
+// ---------- เนื้อหาค่อยๆ โผล่ตอนเลื่อนถึง ----------
+(function(){ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12}); document.querySelectorAll('.rv').forEach(function(el){io.observe(el)}); })();
+</script>
 </body></html>
