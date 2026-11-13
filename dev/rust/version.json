@@ -1,0 +1,27 @@
+{
+ "build": 456467,
+ "version": "v26.1113.2347",
+ "notes": "เกม Rust: ฟอนต์ฝังในเกม และปุ่มย้อนกลับกลับไปเมนู",
+ "files": [
+  {
+   "name": "index.html",
+   "size": 145452,
+   "sha256": "b359720cc830405788238562dd7e39a86cc1df3c7b31d9c1d05fd5244dd38358"
+  },
+  {
+   "name": "apex_rs.js",
+   "size": 41281,
+   "sha256": "c5cc15f095bd27d79d49b646e35756b651f59569e4306d9f1f19ee3ddefedfa2"
+  },
+  {
+   "name": "apex_rs_bg.wasm",
+   "size": 267236,
+   "sha256": "01329428171cfa3e29e1eab399481275a4b0b6218aa20ac11da28507a1fabef6"
+  },
+  {
+   "name": "assets.bin",
+   "size": 7217094,
+   "sha256": "5a39ab748908857e23b89dfa0453c75700d23f729079e1ee27b3f91b78d9749c"
+  }
+ ]
+}
