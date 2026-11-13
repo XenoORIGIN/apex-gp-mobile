@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Apex GP — Rust Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Saira+Condensed:ital,wght@1,800&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #05070d; overflow: hidden; overscroll-behavior: none; }
+  canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+  #hud { z-index: 2; }
+  #loader { position: fixed; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #05070d; color: #e8ecf2; font: 500 14px 'Chakra Petch', system-ui, sans-serif; }
+  #loader b { font: italic 800 30px 'Saira Condensed', 'Chakra Petch', sans-serif; letter-spacing: 1px; }
+  #loader b span { background: #ff1e2d; padding: 2px 12px; margin-left: 8px; transform: skewX(-12deg); display: inline-block; }
+  #rot { display: none; position: fixed; inset: 0; z-index: 4; background: #05070d; color: #e8ecf2; font: 500 15px 'Chakra Petch', system-ui, sans-serif; align-items: center; justify-content: center; text-align: center; }
+  @media (orientation: portrait) { #rot { display: flex; } }
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<canvas id="hud"></canvas>
+<div id="loader"><b>APEX GP<span>RUST TEST</span></b><div id="load">กำลังเริ่ม...</div></div>
+<div id="rot">หมุนจอเป็นแนวนอนเพื่อเล่น</div>
+<script type="module">
+  // ออกจากเกม Rust: กลับไปหน้าที่เปิดมา (แอป Dev) หรือหน้า Dev บนเว็บ
+  window.__apexExit = () => { if (history.length > 1) history.back(); else location.href = '../'; };
+  window.__back = () => { window.__apexExit(); return 1; };
+  const V = 'b1f57d7f9f', AV = '5a39ab7489', q = v => v.startsWith('__') ? '' : '?v=' + v;
+  window.__apexAssets = 'assets.bin' + q(AV);
+  const { default: init, apex_cmd } = await import('./apex_rs.js' + q(V));
+  window.apex = cmd => JSON.parse(apex_cmd(cmd || ''));
+  init({ module_or_path: './apex_rs_bg.wasm' + q(V) }).catch(e => { document.getElementById('load').textContent = 'โหลดเกมไม่สำเร็จ: ' + e; });
+</script>
+</body>
+</html>
