@@ -28,18 +28,19 @@
 <body>
 <canvas id="gl"></canvas>
 <canvas id="hud"></canvas>
-<div id="loader"><b>APEX GP<span>RUST TEST</span></b><div id="load">กำลังเริ่ม...</div></div>
+<div id="loader"><b>APEX GP<span>RUST</span></b><div id="load">กำลังเริ่ม...</div></div>
 <div id="rot">หมุนจอเป็นแนวนอนเพื่อเล่น</div>
 <script type="module">
   // ออกจากเกม Rust: กลับไปหน้าที่เปิดมา (แอป Dev) หรือหน้า Dev บนเว็บ
   window.__apexExit = () => { if (window.ApexHost) ApexHost.exit(); else if (history.length > 1) history.back(); else location.href = '../'; };
   // ปุ่มย้อนกลับของ Android: ระหว่างแข่ง → กลับเมนูเกม, ที่เมนู → ออกจากแอป
-  window.__back = () => { try { const st = window.apex && apex('').state; if (st && st !== 'menu') { apex('menu'); return 1; } } catch (e) {} return 0; };
+  window.__back = () => { try { return window.__apexBackFn && window.__apexBackFn() ? 1 : 0; } catch (e) { return 0; } };
   await Promise.all(['800 20px "Saira C"', '700 20px "Chakra Petch"', '500 20px "Chakra Petch"'].map(f => document.fonts.load(f, 'กขAa1').catch(() => 0)));
-  const V = '475fd8f487', AV = '5a39ab7489', q = v => v.startsWith('__') ? '' : '?v=' + v;
-  window.__apexAssets = 'assets.bin' + q(AV);
-  const { default: init, apex_cmd } = await import('./apex_rs.js' + q(V));
+  const V = '2e1771dcdb', AV = 'f2071fd997', q = v => v.startsWith('__') ? '' : '?v=' + v;
+  window.__apexAV = AV.startsWith('__') ? '' : AV;
+  const { default: init, apex_cmd, apex_back } = await import('./apex_rs.js' + q(V));
   window.apex = cmd => JSON.parse(apex_cmd(cmd || ''));
+  window.__apexBackFn = () => apex_back();
   init({ module_or_path: './apex_rs_bg.wasm' + q(V) }).catch(e => { document.getElementById('load').textContent = 'โหลดเกมไม่สำเร็จ: ' + e; });
 </script>
 </body>

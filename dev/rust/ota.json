@@ -1,0 +1,57 @@
+{
+ "build": 456532,
+ "version": "v26.1114.0052",
+ "notes": "เกม Rust: ครบระบบ (เสียง ฝน พิท ยาง ธง Safety Car โหมด GP/แชมป์/ทัวร์นาเมนต์ 7 สนาม) + ปรับความละเอียดอัตโนมัติ",
+ "files": [
+  {
+   "name": "index.html",
+   "size": 145473,
+   "sha256": "f90e052a168113ba42857f6dcfdce5ccb3cb6467157f1769e530921f393bffd8"
+  },
+  {
+   "name": "apex_rs.js",
+   "size": 49884,
+   "sha256": "490ac29857071b77e4e0868890f242d1cf73f7b4e5f19d569778fa91372528ac"
+  },
+  {
+   "name": "apex_rs_bg.wasm",
+   "size": 499724,
+   "sha256": "9a7f24e56937b84b4e799017538bd8fd76cc7ba7b6a5c89c1c50d73ab270573a"
+  },
+  {
+   "name": "assets_bahrain.bin",
+   "size": 7217724,
+   "sha256": "ac860735b9e2f8cc95c34fd681a12e42ad5932ec5cc693641c0341512e11164d"
+  },
+  {
+   "name": "assets_interlagos.bin",
+   "size": 7469010,
+   "sha256": "475b807ebb71bb5d4f335371c3bae346ecb17b4362d98ff42adc4c188633389f"
+  },
+  {
+   "name": "assets_monaco.bin",
+   "size": 7413518,
+   "sha256": "86f1569417581a07b08c55921cd60ea0dd45542bc5ad3bf7c946d45822fd9ebe"
+  },
+  {
+   "name": "assets_monza.bin",
+   "size": 7441918,
+   "sha256": "64ca82d5007aaaa2145e8edff752c3bc9d6c8734caff52fbd027ad79764a408f"
+  },
+  {
+   "name": "assets_silverstone.bin",
+   "size": 7440735,
+   "sha256": "031814e1a5188022aefeea4030638ddb0525814fa216909bb7a1882fef82b77f"
+  },
+  {
+   "name": "assets_spa.bin",
+   "size": 7510432,
+   "sha256": "a54407160786036b4bda26be5f7f74bc6eef7431735d7e2983b8f0d58c534d7a"
+  },
+  {
+   "name": "assets_suzuka.bin",
+   "size": 7754139,
+   "sha256": "f7c20f16992116a8252551ab4b7cc362c047e72d90ba7dea3a44d60f6df30cc3"
+  }
+ ]
+}
