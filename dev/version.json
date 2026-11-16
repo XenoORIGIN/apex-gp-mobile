@@ -1,7 +1,7 @@
 {
- "build": 460494,
- "version": "v26.1116.1854",
- "size": 2051202,
- "sha256": "f06622d41e717904ece267acee936225b84423c1760d34552198dc2102421807",
- "notes": "optional email field + magic link on dev"
+ "build": 460615,
+ "version": "v26.1116.2055",
+ "size": 2375581,
+ "sha256": "e13c06277b6454245ff4fd3d290488897b438f3e38fb0bdb9bdaf4843762ed2f",
+ "notes": "win celebration with rigged driver model"
 }
