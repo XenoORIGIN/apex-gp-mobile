@@ -1,7 +1,7 @@
 {
- "build": 460368,
- "version": "v26.1116.1648",
- "notes": "หน้าโหลด: สุ่มสนามทุกครั้ง โหลดเสร็จเข้าเกมทันที",
+ "build": 460382,
+ "version": "v26.1116.1702",
+ "notes": "login: magic link email",
  "files": [
   {
    "name": "index.html",
