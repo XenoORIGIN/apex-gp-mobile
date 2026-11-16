@@ -1,7 +1,7 @@
 {
- "build": 460626,
- "version": "v26.1116.2106",
- "notes": "celebration: stand on nose",
+ "build": 460736,
+ "version": "v26.1116.2256",
+ "notes": "ท่าฉลองใหม่ 6 ท่า + โครงกระดูก IK เท้าติดพื้น",
  "files": [
   {
    "name": "index.html",
