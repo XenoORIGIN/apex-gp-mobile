@@ -1,7 +1,7 @@
 {
- "build": 460384,
- "version": "v26.1116.1704",
- "size": 2050804,
- "sha256": "8fd9672ba63918ea8a804d2331027f1160c4b1ab779860a2acf0fa007eae4ef8",
- "notes": "account delete + magic link"
+ "build": 460494,
+ "version": "v26.1116.1854",
+ "size": 2051202,
+ "sha256": "f06622d41e717904ece267acee936225b84423c1760d34552198dc2102421807",
+ "notes": "optional email field + magic link on dev"
 }
