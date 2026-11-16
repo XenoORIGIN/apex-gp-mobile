@@ -1,7 +1,7 @@
 {
- "build": 460382,
- "version": "v26.1116.1702",
- "notes": "login: magic link email",
+ "build": 460384,
+ "version": "v26.1116.1704",
+ "notes": "account delete + magic link",
  "files": [
   {
    "name": "index.html",
