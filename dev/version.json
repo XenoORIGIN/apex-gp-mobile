@@ -1,7 +1,7 @@
 {
- "build": 461817,
- "version": "v26.1117.1657",
- "size": 2563957,
- "sha256": "c5b2a32f324d8321f2e3b362fd337af52a92b30e76dcf553da45a7140dd95cd2",
- "notes": "แก้ภาพกระตุกตอนออกตัว (shader คอมไพล์ใหม่ทั้งชุด) · Ultra ลดความละเอียดเองเมื่อเฟรมตก"
+ "build": 462030,
+ "version": "v26.1117.2030",
+ "size": 2574267,
+ "sha256": "6abf85de3ddc6ab00be142b02d0e7cb2c361bc8dd4c7dcca08c7a89385150615",
+ "notes": "gameplay: harder AI, handling feel, livery relief, racing line, MP hidden, shader warmup + auto resolution"
 }

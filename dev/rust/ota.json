@@ -1,7 +1,7 @@
 {
- "build": 461817,
- "version": "v26.1117.1657",
- "notes": "แก้ภาพกระตุกตอนออกตัว (shader คอมไพล์ใหม่ทั้งชุด) · Ultra ลดความละเอียดเองเมื่อเฟรมตก",
+ "build": 462030,
+ "version": "v26.1117.2030",
+ "notes": "gameplay: harder AI, handling feel, livery relief, racing line, MP hidden, shader warmup + auto resolution",
  "files": [
   {
    "name": "index.html",
