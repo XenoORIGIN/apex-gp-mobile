@@ -1,7 +1,7 @@
 {
- "build": 462030,
- "version": "v26.1117.2030",
- "size": 2574267,
- "sha256": "6abf85de3ddc6ab00be142b02d0e7cb2c361bc8dd4c7dcca08c7a89385150615",
- "notes": "gameplay: harder AI, handling feel, livery relief, racing line, MP hidden, shader warmup + auto resolution"
+ "build": 464923,
+ "version": "v26.1119.2043",
+ "size": 2577715,
+ "sha256": "65e3673acdf6bb3940f17f8c59b6f5e036dd1da383a1296294cd0d6b5efc7026",
+ "notes": "perf: ชุดประหยัด + ตรวจการ์ดจออ่อน + ลดกราฟิกเองเมื่อช้า"
 }

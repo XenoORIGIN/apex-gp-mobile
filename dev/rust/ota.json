@@ -1,7 +1,7 @@
 {
- "build": 462030,
- "version": "v26.1117.2030",
- "notes": "gameplay: harder AI, handling feel, livery relief, racing line, MP hidden, shader warmup + auto resolution",
+ "build": 464923,
+ "version": "v26.1119.2043",
+ "notes": "perf: ชุดประหยัด + ตรวจการ์ดจออ่อน + ลดกราฟิกเองเมื่อช้า",
  "files": [
   {
    "name": "index.html",
